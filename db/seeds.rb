@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Running seeds"
+   james = Employee.create([{ name: 'Star Wars', phone: '619619', credit: 0 }, { name: 'Lord of the Rings', phone: '619619', credit: 0 }])
+   Employee.create(name: 'Luke', phone: '629118', credit: 1)
+puts "done"

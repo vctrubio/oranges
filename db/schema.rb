@@ -10,10 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_114007) do
+ActiveRecord::Schema.define(version: 2020_09_25_153422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "address"
+    t.string "zone"
+    t.text "description"
+    t.integer "rating"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["employee_id"], name: "index_clients_on_employee_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.float "credit"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "names", force: :cascade do |t|
+    t.string "phone"
+    t.string "address"
+    t.string "zone"
+    t.text "description"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_names_on_employee_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.datetime "date"
+    t.float "price"
+    t.string "comment"
+    t.boolean "delivered"
+    t.boolean "paid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.integer "kg"
+    t.string "fruit"
+    t.float "ppfruit"
+    t.float "tprice"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_tickets_on_order_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +91,8 @@ ActiveRecord::Schema.define(version: 2020_09_25_114007) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clients", "employees"
+  add_foreign_key "names", "employees"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "tickets", "orders"
 end

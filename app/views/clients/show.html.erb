@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @client.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @client.address %>
+</p>
+
+<p>
+  <strong>Zone:</strong>
+  <%= @client.zone %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @client.description %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @client.rating %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @client.employee_id %>
+</p>
+
+<class class="container">
+<h3><%= @client.name %> has <%= @client.orders.count %> <%= link_to "Create an order", new_client_order_path(@client) %></h3>
+
+</class>
+
+<br>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+<%# if client_id present - automaticaly put client id as client  => default tpm    %>
+    <%= f.association :client %>
+    <%= f.input :date %>
+    <%= f.input :price %>
+    <%= f.input :comment %>
+    <%= f.input :delivered %>
+    <%= f.input :paid %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
