@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :tests
-  resources :tickets
-  resources :orders
+  resources :orders do 
+    resources :receipts, only: [:create, :destroy]
+    end
   resources :clients  do 
     resources :orders
   end

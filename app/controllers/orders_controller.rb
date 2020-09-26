@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_client, only: [:new]
+  before_action :new_receipt, only: [:show]
+
 
   # GET /orders
   def index
@@ -14,7 +16,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @order.tickets.build
+    @order.client = @client 
+  #  wtf is thshit @order.tickets.build ur mama was a rilling stone
   end
 
   # GET /orders/1/edit
@@ -55,11 +58,14 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:client_id, :date, :price, :comment, :delivered, :paid, tickets_attributes: [:order_id, :kg, :fruit, :ppfruit, :tprice])
+      params.require(:order).permit(:client_id, :date, :price, :comment, :delivered, :paid)
     end
-
+#tickets_attributes: [:order_id, :kg, :fruit, :ppfruit, :tprice]
     def set_client
       @client = Client.find(params[:client_id])
     end     
     
+    def new_receipt
+      @receipt = Receipt.new
+    end
 end

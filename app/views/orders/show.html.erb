@@ -30,15 +30,23 @@
   <%= @order.paid %>
 </p>
 
-<p>
+  <div class="container">
+    <strong> <%=@order.receipts.count%>(Reciepts):</strong>
 
-  <strong>TotalTickets(Reciepts): <%=@order.tickets.count%></strong>
-  <br>
-  <%@order.tickets.each do |t| %>
-  <%= t.kg %> kgs , <%= t.fruit %>, at <%= t.ppfruit %> €/kg with a <strong>total of <%= t.tprice %></strong> 
-  <br>
-  <% end %>
-</p>
+      <%@order.receipts.each do |t| %>
+        <li><%= t.kilos %> k , <%= t.fruit %>, at <%= t.ppfruit %> €/kg  <strong>  //totalprice: <%= t.tprice %></strong> 
+      <% end %>
+      </li>
 
+    <%= simple_form_for([@order, @receipt]) do |f|%>
+    <%= f.input :kilos %>
+    <%= f.input :fruit %>
+    <%= f.input :ppfruit %>
+    <%= f.input :tprice %>
+    <%= f.button :submit %>
+    <% end %>
+  </div>
+
+<br>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

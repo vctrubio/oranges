@@ -8,13 +8,15 @@
     <%= f.association :client %>
     <%= f.input :date %>
 
-    <div class="field">
-      <%= f.fields_for :tickets do |t|%>
-      <%= render 'ticket_fields', t: t %>
-    <% end %>
-      <%= link_to_add_fields "Add", f, :tickets %>
+
+    <div class="add-fucking-tickets-man">    
     </div>
 
+      <%# <%= f.fields_for :tickets do |t|%>
+      <%# <%= render 'ticket_fields', t: t %>
+      <%# <% end %> 
+      <%# <%= link_to_add_fields "Add", f, :tickets %>
+ 
     <br>
     <%= f.input :delivered %>
     <%= f.input :paid %>
@@ -29,5 +31,6 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
 
 

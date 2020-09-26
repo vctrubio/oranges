@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_153422) do
+ActiveRecord::Schema.define(version: 2020_09_26_123911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.integer "kg"
+    t.string "fruit"
+    t.float "ppfruit"
+    t.float "tprice"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_bills_on_order_id"
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -62,6 +73,17 @@ ActiveRecord::Schema.define(version: 2020_09_25_153422) do
     t.index ["client_id"], name: "index_orders_on_client_id"
   end
 
+  create_table "receipts", force: :cascade do |t|
+    t.integer "kilos"
+    t.string "fruit"
+    t.float "ppfruit"
+    t.float "tprice"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_receipts_on_order_id"
+  end
+
   create_table "tests", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -91,8 +113,10 @@ ActiveRecord::Schema.define(version: 2020_09_25_153422) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bills", "orders"
   add_foreign_key "clients", "employees"
   add_foreign_key "names", "employees"
   add_foreign_key "orders", "clients"
+  add_foreign_key "receipts", "orders"
   add_foreign_key "tickets", "orders"
 end

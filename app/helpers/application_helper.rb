@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+#this is bad code gaylord because it faks it up
     def link_to_add_fields(name, form, association)
         #create new object from association (ie tickets)-rubydoc
         new_object = form.object.send(association).klass.new
