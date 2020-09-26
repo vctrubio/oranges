@@ -22,7 +22,6 @@ class TicketsController < ApplicationController
   # POST /tickets
   def create
     @ticket = Ticket.new(ticket_params)
-
     if @ticket.save
       redirect_to @ticket, notice: 'Ticket was successfully created.'
     else

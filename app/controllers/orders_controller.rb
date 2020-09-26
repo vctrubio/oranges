@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.tickets.build
   end
 
   # GET /orders/1/edit
@@ -54,7 +55,7 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:client_id, :date, :price, :comment, :delivered, :paid)
+      params.require(:order).permit(:client_id, :date, :price, :comment, :delivered, :paid, tickets_attributes: [:order_id, :kg, :fruit, :ppfruit, :tprice])
     end
 
     def set_client

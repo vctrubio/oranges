@@ -7,13 +7,27 @@
 <%# if client_id present - automaticaly put client id as client  => default tpm    %>
     <%= f.association :client %>
     <%= f.input :date %>
-    <%= f.input :price %>
-    <%= f.input :comment %>
+
+    <div class="field">
+      <%= f.fields_for :tickets do |t|%>
+      <%= render 'ticket_fields', t: t %>
+    <% end %>
+      <%= link_to_add_fields "Add", f, :tickets %>
+    </div>
+
+    <br>
     <%= f.input :delivered %>
     <%= f.input :paid %>
+    <%= f.input :comment %>
+    <%# <%= f.input :price %> 
+
   </div>
+
+
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
 <% end %>
+
+
