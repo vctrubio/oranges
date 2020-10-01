@@ -32,7 +32,7 @@ class ReceiptsController < ApplicationController
       private
     
       def receipt_params
-        params.require(:receipt).permit(:kilos, :fruit, :ppfruit, :tprice, :receipt_id, orders_attributes: [:order_id, :price], clients_attributes:[:name], employees_attributes: [:employee_id, :credit] )
+        params.require(:receipt).permit(:kilos, :fruit, :ppfruit, :tprice, :receipt_id, orders_attributes: [:order_id, :price], clients_attributes:[:name, employees_attributes: [:employee_id, :credit]] )
       end
 
  

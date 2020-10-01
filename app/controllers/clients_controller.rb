@@ -58,6 +58,7 @@ class ClientsController < ApplicationController
       params.require(:client).permit(:name, :phone, :address, :zone, :description, :rating, :employee_id)
     end
 
+    #orders_attributes: [:order_id, :price], receipts_attributes:[:tprice]
     def set_employee
       @employee = Employee.find(params[:id])
     end
