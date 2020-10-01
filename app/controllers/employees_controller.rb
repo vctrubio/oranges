@@ -72,3 +72,5 @@ class EmployeesController < ApplicationController
       params.require(:employee).permit(:name, :phone, :credit, :description)
     end
 end
+
+# orders_attributes:[:price, receipts_attributes:[:tprice]]

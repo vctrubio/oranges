@@ -16,7 +16,7 @@ class ReceiptsController < ApplicationController
 
     def addorderprice
       @order.price += @receipt.tprice
-      @employee += @receipt.tprice
+      @order.client.employee.credit += @receipt.tprice
     end
 
       # DELETE /orders/1 FUCKING WORK ON THIS CAUSE IT DOESNT WORK- PARAMS CANNOT FIND ID BLABLABLA
@@ -32,7 +32,7 @@ class ReceiptsController < ApplicationController
       private
     
       def receipt_params
-        params.require(:receipt).permit(:kilos, :fruit, :ppfruit, :tprice, :receipt_id, orders_attributes: [:order_id, :price], employees_attributes: [:client_id, :credit] )
+        params.require(:receipt).permit(:kilos, :fruit, :ppfruit, :tprice, :receipt_id, orders_attributes: [:order_id, :price], clients_attributes:[:name], employees_attributes: [:employee_id, :credit] )
       end
 
  

@@ -8,7 +8,5 @@ class Order < ApplicationRecord
   # belongs_to :employee, through: :clients --> because when u delete 
 
   accepts_nested_attributes_for :receipts
-  accepts_nested_attributes_for :employee
-
 
 end

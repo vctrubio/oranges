@@ -40,7 +40,6 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
-   #@order.price = @order.receipts.sum(:tprice) how do you do this
     if @order.update(order_params)
       redirect_to @order, notice: 'Order was successfully updated.'
     else
@@ -67,6 +66,10 @@ class OrdersController < ApplicationController
 #tickets_attributes: [:order_id, :kg, :fruit, :ppfruit, :tprice]
     def set_client
       @client = Client.find(params[:client_id])
+    end  
+    
+    def  find_employee
+      @employee = Employee.find(params[:employee_id])
     end     
     
     def new_receipt
