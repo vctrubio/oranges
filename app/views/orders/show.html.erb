@@ -34,7 +34,9 @@
     <strong> <%=@order.receipts.count%>(Reciepts):</strong>
 
       <%@order.receipts.each do |t| %>
-        <li><%= t.kilos %> k , <%= t.fruit %>, at <%= t.ppfruit %> €/kg  <strong>  //totalprice: <%= t.tprice %> <%= link_to 'Delete', order_receipt_path(t.id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+        <li>
+        <%# <%= hidden_field_tag :t.id, receiptid %>
+        <%= t.kilos %> k , <%= t.fruit %>, at <%= t.ppfruit %> €/kg  <strong>  //totalprice: <%= t.tprice %> <%= link_to 'Delete', order_receipt_path(t.id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
  </strong> 
       <% end %>
       </li>

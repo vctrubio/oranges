@@ -23,7 +23,7 @@ class ReceiptsController < ApplicationController
 
     def destroy
       @order = Order.find(params[:id])
-      @receipt = Receipt.find(params[:id])
+      @receipt = Receipt.find(params[:receipt_id])
       @receipt.destroy
       redirect_to root_path
     end
