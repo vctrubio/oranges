@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :orders do 
-    resources :receipts, only: [:create, :destroy]
+    resources :receipts, only: [:create, :destroy,]
     end
   resources :clients  do 
     resources :orders

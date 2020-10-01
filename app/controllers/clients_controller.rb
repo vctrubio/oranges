@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  # before_action :set_employee
 
   # GET /clients
   def index
@@ -13,6 +14,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    
   end
 
   # GET /clients/1/edit
@@ -55,4 +57,10 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:name, :phone, :address, :zone, :description, :rating, :employee_id)
     end
+
+    def set_employee
+      @employee = Employee.find(params[:id])
+    end
+
 end
+

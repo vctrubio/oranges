@@ -27,7 +27,10 @@ class OrdersController < ApplicationController
   # POST /orders
   def create
     @order = Order.new(order_params)
-
+    @order.price = 0
+    if @order.receipts.nil?
+      @order.price = (@order.receipts.tprice.sum)
+    end
     if @order.save
       redirect_to @order, notice: 'Order was successfully created.'
     else
@@ -37,6 +40,7 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
+   #@order.price = @order.receipts.sum(:tprice) how do you do this
     if @order.update(order_params)
       redirect_to @order, notice: 'Order was successfully updated.'
     else
@@ -44,7 +48,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
   def destroy
     @order.destroy
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
@@ -58,8 +61,9 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:client_id, :date, :price, :comment, :delivered, :paid)
+      params.require(:order).permit(:client_id, :date, :price, :comment, :delivered, :paid, receipts_attributes: [:order_id, :kg, :fruit, :ppfruit, :tprice] )
     end
+
 #tickets_attributes: [:order_id, :kg, :fruit, :ppfruit, :tprice]
     def set_client
       @client = Client.find(params[:client_id])

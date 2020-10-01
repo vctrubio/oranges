@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Running seeds"
-   james = Employee.create([{ name: 'Star Wars', phone: '619619', credit: 0 }, { name: 'Lord of the Rings', phone: '619619', credit: 0 }])
-   Employee.create(name: 'Luke', phone: '629118', credit: 1)
+   Employee.create([{ name: 'Star Wars', phone: '677619619', credit: 0 }, { name: 'Lord of the Rings', phone: '689619619', credit: 0 }])
+   roque = Employee.create(name: 'Roque', phone: '62911823', credit: 0)
+   a = Employee.create(name: 'Andy', phone: '629113811', credit: 1)
+   r = Employee.create(name: 'Roger', phone: '62911867', credit: 1)
+   t = Employee.create(name: 'Titor', phone: '62912867', credit: 2000, description: "manager in charge")
+   n = Employee.create(name: 'Nacho', phone: '62901867', credit: 0)
+
+   
 puts "done"
