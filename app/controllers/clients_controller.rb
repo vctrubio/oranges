@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-  before_action :set_employee, only: [:new]
   # before_action :set_employee
 
   # GET /clients
@@ -9,13 +8,13 @@ class ClientsController < ApplicationController
   end
 
   # GET /clients/1
-  def show      
+  def show
   end
 
   # GET /clients/new
   def new
     @client = Client.new
-    @client.employee = @employee
+    
   end
 
   # GET /clients/1/edit
