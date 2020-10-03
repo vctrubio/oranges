@@ -33,7 +33,7 @@
 
 <p>
   <strong>Employee:</strong>
-  <%= @client.employee.name %>
+  <%= link_to @client.employee.name, employee_path(@client.employee) %>
 </p>
 
 <class class="container">
