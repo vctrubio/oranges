@@ -2,7 +2,6 @@ class Receipt < ApplicationRecord
   belongs_to :order
   has_many :clients, through: :orders
   has_many :employees, through: :clients
-
   #has_many :clients, through: :orders
 
 

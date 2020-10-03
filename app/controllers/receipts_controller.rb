@@ -16,15 +16,17 @@ class ReceiptsController < ApplicationController
 
     def addorderprice
       @order.price += @receipt.tprice
-      @order.client.employee.credit += @receipt.tprice
+      @order.client.employee.credit += @receipt.tprice * (0.10)
     end
 
       # DELETE /orders/1 FUCKING WORK ON THIS CAUSE IT DOESNT WORK- PARAMS CANNOT FIND ID BLABLABLA
 
     def destroy
-      @order = Order.find(params[:id])
-      @receipt = Receipt.find(params[:receipt_id])
-      @receipt.destroy
+      @order = Order.find(params[:order_id])
+      @id = (params[:id])
+      # @receipt = Receipt.find(params[:receipt_id])
+      @order.receipts_id(@id).destroy
+      # UNABLE TO DO @ORDER.RECEIPT BECAUE CANNOT FIND ID
       redirect_to root_path
     end
 
