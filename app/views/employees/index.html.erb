@@ -1,33 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Employees</h1>
+<div class="container">
+  <div class="headnav">
+    <div class="row">
+    <div class="col-4"><p>Bitches</p> </div>
+    <div class="col-4"><p>Search Bar</p></div>  
+    <div class="col-2"><p>Tickbar</p></div>
+    <div class="col-2"><p>Sortdropdown</p></div> 
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Credit</th>
-      <th>#ofClients</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.phone %></td>
-        <td><%= employee.credit %></td>
-        <td><%= employee.clients.count %></td>        
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @employees.each do |employee| %>
+
+    <div class="container card-outline">
+      <div class="row card-heading">
+        <div class="col-6">
+        <%= link_to employee.name, employee %>
+        </div>
+        <div class="col-2"> <%= employee.clients.count %> <i class="fas fa-smile"></i> </div>
+        <div class="col-3"> <%= employee.credit %> <i class="fas fa-coins"></i> </div>
+        <div class="col-1"> [√] </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-4"><%= employee.phone %> <i class="fas fa-phone-square"></i> </div>
+        <div class="col-8"> <%= employee.description %> </div>
+      </div>
+      <div class="row">
+        <div class="col-2"> <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %> </div>
+        <div class="col-2"> <%= link_to 'Edit', edit_employee_path(employee) %> </div>
+      </div>
+    </div>
+
+  <% end %>
 
 <br>
 
 <%= link_to 'New Employee', new_employee_path %>
+</div>
