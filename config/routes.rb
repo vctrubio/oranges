@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+  get 'pickups/show'
+  get 'pickups/new'
+  get 'pickups/edit'
+  get 'landlords/index'
+  get 'landlords/show'
+  get 'landlords/new'
+  get 'landlords/edit'
   resources :orders do 
-    resources :receipts, only: [:create, :destroy,]
+    resources :receipts, only: [:create, :destroy]
     end
   resources :clients  do 
     resources :orders
   end
   resources :employees
+  resources :landlords
+  resources :pickups, only: [:create, :edit, :show, :index, :destroy, :new]
+  resources :bags, only: [:create, :destroy, :new, :index, :edit]
   devise_for :users
   root to: 'orders#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

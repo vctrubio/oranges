@@ -1,0 +1,28 @@
+<h1>Landlords#index</h1>
+<p>Find me in app/views/landlords/index.html.erb</p>
+
+<div class="row navgrid">
+    <div class="container col-4 spaceone">
+        <% @landlords.each do |l|  %>
+           <div class="row container"> <i class="fas fa-user-secret"></i> <%= link_to l.name, landlord_path(l) %> </div> 
+        <% end%>
+    </div>
+    <div class="container col-4 spacetwo">
+        <% @pickups.each do |l| %>
+            <div class="row">  <i class="fas fa-truck-pickup"></i>  <%= l.landlord.name%> | <%= link_to l.date, pickup_path(l) %> </div>
+            <% end %>
+    </div>
+    <div class="container col-4 spacethree">
+        <% @bags.each do |l| %>
+            <div class="row"> <i class="fas fa-truck-loading"></i><%= l.fruit %> | <%= l.quantity %> kg| <%= l.price %>€</div>
+                <% end %>
+    </div>    
+</div>
+
+<div class="bottombum">
+    <div class="row">
+    <div class="col-4"><%= link_to "New George", new_landlord_path %></div>
+    <div class="col-4"><%= link_to "New Trip", new_pickup_path %></div>
+    <div class="col-4"><%= link_to "+ Recogida", new_bag_path %></div>
+    </div>
+</div>

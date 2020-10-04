@@ -1,0 +1,32 @@
+<strong><%= @pickup.landlord.name %> |
+<%= @pickup.date %>
+</strong>
+
+<br>
+    
+<p>
+  <strong>Total kg:</strong>
+  <%= @pickup.kgs %>
+</p>
+
+<p>
+  <strong>Total cost:</strong>
+  <%= @pickup.cost %>  (<%= @pickup.addcost %> extra)
+</p>
+
+
+<p>
+  <strong>Recojidas:</strong>
+  <% @pickup.bags.each do |f| %>
+  <br>
+    <%= f.fruit %> , <%= f.quantity%> kg - <%= f.price %>€ 
+     <%end %>
+</p>
+
+
+
+<br>
+
+
+<%= link_to 'Edit', edit_pickup_path(@pickup) %> |
+<%= link_to 'Back', landlords_path %>

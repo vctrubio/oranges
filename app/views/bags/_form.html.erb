@@ -1,0 +1,16 @@
+
+<%= simple_form_for(@bag) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :pickup, collection: Pickup.all.map { |pickup| [pickup.date, pickup.id] }%>
+    <%= f.input :fruit %>
+    <%= f.input :quantity %>
+    <%= f.input :price %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

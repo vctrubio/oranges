@@ -4,7 +4,7 @@
     <div class="col-4"><p>Clients</p> </div>
     <div class="col-4"><p>Search Bar</p></div>  
     <div class="col-2"><p>[√]</p></div>
-    <div class="col-2"><p>Sortdropdown</p></div> 
+    <div class="col-2"><p>[Sort]</p></div> 
 </div>
 
 <table>
@@ -13,20 +13,22 @@
     <% @clients.each do |client| %>
     <div class="card-outline">
       <div class="row">
-        <div class="col-4"><i class="far fa-address-card"></i> <%= link_to client.name, client %></div>
-        <div class="col-2"><i class="fas fa-concierge-bell"></i> <%=client.orders.count%></div>
-        <div class="col-4"><i class="fas fa-file-signature"></i><%= client.employee.name %></div>
+        <div class="col-3"><i class="far fa-address-card"></i> <%= link_to client.name, client %></div>
+        <div class="col-3"><i class="fas fa-star"></i><%=client.orders.count%></div>
+        <div class="col-3"><i class="fas fa-file-signature"></i><%= client.employee.name %></div>
+        <div class="col-3">
+          <button type="button" class="btn btn-warning"><%= link_to "+PEDIDO", new_client_order_path(client) %>
+          </button>
+            </div>
       </div>
       
       <div class="row">
-        <div class="col-4"><i class="fas fa-phone-square"></i> <%= client.phone %></div>
-        <div class="col-4"><i class="fas fa-map-marker-alt"></i> <%= client.address %></div>
-        <div class="col-2"> <%= client.zone %></div>
-
+        <div class="col-3"><i class="fas fa-phone-square"></i> <%= client.phone %></div>
+        <div class="col-6"><i class="fas fa-map-marker-alt"></i> <%= client.address %></div>
+        <div class="col-3"> <%= client.zone %></div>
       </div>
       <div class="row">
         <div class="col-4"> <%= client.description %></div>
-        <div class="col-2"> <i class="fas fa-star"></i> <%= client.rating %></div>
         <div class="col-2"> <%= link_to 'Edit', edit_client_path(client) %></div>
         <div class="col-2"> <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></div>
       </div>
