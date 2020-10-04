@@ -1,11 +1,23 @@
 .spaceone {
-  background-color: green;
+  background-color: #4b4747;
+  a:link {
+    text-decoration: none;
+  }
 }
 
 .spacetwo {
-  background-color: yellow;
+  background-color: hsl(0, 0%, 80%);
+  a:link {
+    text-decoration: none;
+  }
 }
 
 .spacethree {
-  background-color: red;
+  background-color: #b08c40;
+}
+
+.navgrid {
+  a:link {
+    text-decoration: none;
+  }
 }

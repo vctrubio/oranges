@@ -1,20 +1,20 @@
-<h1>Landlords#index</h1>
-<p>Find me in app/views/landlords/index.html.erb</p>
+<h1>Ir a Valencia</h1>
+<p>Hay un Jorge, una fecha, y muchas cosecha</p>
 
 <div class="row navgrid">
-    <div class="container col-4 spaceone">
+    <div class="container col-2 spaceone">
         <% @landlords.each do |l|  %>
-           <div class="row container"> <i class="fas fa-user-secret"></i> <%= link_to l.name, landlord_path(l) %> </div> 
+           <div class="row container"><%= link_to l.name, landlord_path(l) %>  | <%= l.pickups.count %> </div> 
         <% end%>
     </div>
-    <div class="container col-4 spacetwo">
+    <div class="container col-6 spacetwo">
         <% @pickups.each do |l| %>
-            <div class="row">  <i class="fas fa-truck-pickup"></i>  <%= l.landlord.name%> | <%= link_to l.date, pickup_path(l) %> </div>
+            <div class="row">  <i class="fas fa-truck-pickup"></i>  <%= l.landlord.name%> | <%= link_to l.date.to_formatted_s(:short) , pickup_path(l) %> <%=l.kgs%>kg <%=l.cost%>€ <%=l.bags.count%><i class="fas fa-boxes"></i></div>
             <% end %>
     </div>
     <div class="container col-4 spacethree">
         <% @bags.each do |l| %>
-            <div class="row"> <i class="fas fa-truck-loading"></i><%= l.fruit %> | <%= l.quantity %> kg| <%= l.price %>€</div>
+            <div class="row"><%= l.fruit %> | <%= l.price %>€ /<%= l.quantity %>  <i class="fas fa-truck-loading"></i></div>
                 <% end %>
     </div>    
 </div>

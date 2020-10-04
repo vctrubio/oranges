@@ -29,7 +29,12 @@ class BagsController < ApplicationController
           end
         end
       
-        # PATCH/PUT /landlonds/1
+        def addcost
+          @pickup.cost += @bag.price
+          @pickup.kgs += @bag.quantity
+        end
+        
+        # PATCH/PUT /landlonds/1 
         def update
           if @bag.update(bag_params)
             redirect_to @bag, notice: 'bag was successfully updated.'

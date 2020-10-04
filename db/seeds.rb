@@ -7,12 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Running seeds"
-   Employee.create([{ name: 'NN', phone: '677619619', credit: 5 }, { name: 'LordRing', phone: '689619619', credit: 0 }])
-   roque = Employee.create(name: 'Faggoty', phone: '62911823', credit: 1)
-   a = Employee.create(name: 'Speedy', phone: '629113811', credit: 1)
-   r = Employee.create(name: 'Cunty', phone: '62911867', credit: 1)
-   t = Employee.create(name: 'Titor', phone: '62912867', credit: 20, description: "manager in charge")
-   n = Employee.create(name: 'Nacho', phone: '62901867', credit: 0)
+   Employee.create([{ name: 'NN', phone: '677619619', credit: 0, description: "Cuenta numero uno" }, { name: 'Paula', phone: '689619619', credit: 0, description: "Sexy lady, solo pa ligar"}])
+   roque = Employee.create(name: 'Faggotier', phone: '629118235', credit: -7800, description: "Con esa duda no hay que dudar")
+   a = Employee.create(name: 'Fin Gallager', phone: '629113811', credit: 0, description: "Tod me he was going to get 50 ppl")
+   r = Employee.create(name: 'Gaspar', phone: '662911867', credit: 1, description: "can't design but can he speak")
+   t = Employee.create(name: 'Gayguel', phone: '629128670', credit: 20, description: "Manager in charge")
 
    n = Landlord.create(name: 'Jorge', phone: '62901867', address: "Valencia Road", description: "Solo las Navelinas", fields: 3)
 

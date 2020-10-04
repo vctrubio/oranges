@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
       @order.price = (@order.receipts.tprice.sum)
     end
     if @order.save
-      redirect_to @order, notice: 'Order was successfully created.'
+      redirect_to @order
     else
       render :new
     end

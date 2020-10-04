@@ -1,32 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<div class="order-nav">
+  <div class="row">
+  <div class="col-2"> <strong>Pedidos</strong></div>
+  <div class="col-4 searchbar"> Search Bar</div>
+  <div class="col-2">Filtros[]</div>
+  <div class="col-2">Sort</div>
+  </div>
+</div>
 
 <table>
-  <thead>
-    <tr>
-      <th>Client</th>
-      <th>Date</th>
-      <th>Price</th>
-      <th>Comment</th>
-      <th>Delivered</th>
-      <th>Paid</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.client.name %></td>
-        <td><%= order.date %></td>
-        <td><%= order.price %></td>
-        <td><%= order.comment %></td>
-        <td><%= order.delivered %></td>
-        <td><%= order.paid %></td>
-        <td><%= link_to 'Show', order_path(order) %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <div class="container order-card">
+      <div class="row">
+        <div class="col-12"><%= order.client.name %></div>
+      </div>
+      <div class="row">
+        <div class="col-12"><%= order.date.to_formatted_s(:short)%></div>
+      </div>
+      <div class="row">
+        <div class="col-12"><%= order.client.address %></div>
+      </div>  
+      <div class="row">
+        <div class="col-12"><%= order.comment %></div>
+      </div>
+      <div class="row">
+        <div class="col-2"> <%= order.price %>
+        </div>
+        <div class="col-2"> <%= order.receipts.count %>
+        </div>
+        <div class="col-2"> <%= order.delivered %>
+        </div> 
+        <div class="col-2"> <%= order.paid %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+        <%= link_to 'Show', order_path(order) %>
+        <%= link_to 'Edit', edit_order_path(order) %>
+        <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
       </tr>
     <% end %>
   </tbody>

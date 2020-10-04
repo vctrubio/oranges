@@ -44,7 +44,7 @@ class PickupsController < ApplicationController
   # DELETE /landlonds/1
   def destroy
     @pickup.destroy
-    redirect_to landlonds_url, notice: 'pickup was successfully destroyed.'
+    redirect_to landlords_path
   end
 
   private

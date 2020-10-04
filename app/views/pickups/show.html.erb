@@ -24,9 +24,11 @@
 </p>
 
 
-
+<br>
+<%= link_to 'Merrcadona', new_bag_path(@pickup) %>
 <br>
 
 
 <%= link_to 'Edit', edit_pickup_path(@pickup) %> |
 <%= link_to 'Back', landlords_path %>
+<%= link_to "Delete", pickup_path(@pickup), method: :delete, data: { confirm: 'Are you sure?' }  %>
