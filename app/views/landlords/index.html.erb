@@ -1,28 +1,20 @@
-<h1>Ir a Valencia</h1>
-<p>Hay un Jorge, una fecha, y muchas cosecha</p>
-
-<div class="row navgrid">
-    <div class="container col-2 spaceone">
-        <% @landlords.each do |l|  %>
-           <div class="row container"><%= link_to l.name, landlord_path(l) %>  | <%= l.pickups.count %> </div> 
+<h1>Ir a Valencia</h1> <p><%= link_to "New Trip", new_pickup_path %> | <%= link_to "+ Recogida", new_bag_path %> | <%= link_to "Nuevo Contacto", new_landlord_path %></p>
+<p> <% @landlords.each do |l|  %>
+    <%= link_to l.name, landlord_path(l) %>  <%= l.pickups.count %>  <i class="fas fa-truck-loading"></i> | </div> 
         <% end%>
+</p>
+
+<% @pickups.each do |l| %>
+<div class="container row marginfive">
+    <div class="card-pickups">
+    <%= link_to l.date.to_formatted_s(:short) , pickup_path(l) %> , <%=l.kgs%>kg, <%=l.cost%>€ ||avg
+        </div>
+        <div class="container row">
+        <%l.bags.each do |f| %>
+            <%= f.fruit %>, <%= f.quantity %> kg, <%= f.price %> € 
     </div>
-    <div class="container col-6 spacetwo">
-        <% @pickups.each do |l| %>
-            <div class="row">  <i class="fas fa-truck-pickup"></i>  <%= l.landlord.name%> | <%= link_to l.date.to_formatted_s(:short) , pickup_path(l) %> <%=l.kgs%>kg <%=l.cost%>€ <%=l.bags.count%><i class="fas fa-boxes"></i></div>
-            <% end %>
-    </div>
-    <div class="container col-4 spacethree">
-        <% @bags.each do |l| %>
-            <div class="row"><%= l.fruit %> | <%= l.price %>€ /<%= l.quantity %>  <i class="fas fa-truck-loading"></i></div>
-                <% end %>
-    </div>    
+         <% end %>
+    <% end %>
 </div>
 
-<div class="bottombum">
-    <div class="row">
-    <div class="col-4"><%= link_to "New George", new_landlord_path %></div>
-    <div class="col-4"><%= link_to "New Trip", new_pickup_path %></div>
-    <div class="col-4"><%= link_to "+ Recogida", new_bag_path %></div>
-    </div>
-</div>
+

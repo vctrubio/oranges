@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'pickups/show'
-  get 'pickups/new'
-  get 'pickups/edit'
-  get 'landlords/index'
-  get 'landlords/show'
-  get 'landlords/new'
-  get 'landlords/edit'
   resources :orders do 
     resources :receipts, only: [:create, :destroy]
     end

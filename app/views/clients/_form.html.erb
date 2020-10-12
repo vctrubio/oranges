@@ -10,11 +10,11 @@
     <%= f.input :phone %>
     <%= f.input :address %>
     <%= f.input :zone %>
-    <%= f.input :rating, as: :range%>
     <%= f.input :description %>
+    <%= f.input :rating%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>

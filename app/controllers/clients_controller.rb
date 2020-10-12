@@ -14,7 +14,8 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
-    
+    b = params[:bone]
+    @client.employee_id = b
   end
 
   # GET /clients/1/edit

@@ -13,6 +13,9 @@ class BagsController < ApplicationController
         # GET /landlonds/new
         def new
           @bag = Bag.new
+          b = params[:format]
+          @bag.pickup_id = b
+          
         end
       
         # GET /landlonds/1/edit
@@ -22,18 +25,19 @@ class BagsController < ApplicationController
         # POST /landlonds
         def create
           @bag = Bag.new(bag_params)
+          addcost
           if @bag.save
-            redirect_to landlords_path, notice: 'bag was successfully created.'
+            redirect_to pickup_path(@bag.pickup), notice: 'bag was successfully created.'
           else
             render :new
           end
         end
       
         def addcost
-          @pickup.cost += @bag.price
-          @pickup.kgs += @bag.quantity
+          @bag.pickup.cost += @bag.price * @bag.quantity
+          @bag.pickup.kgs += @bag.quantity
         end
-        
+
         # PATCH/PUT /landlonds/1 
         def update
           if @bag.update(bag_params)

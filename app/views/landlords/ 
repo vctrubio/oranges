@@ -1,0 +1,29 @@
+<h1>Ir a Valencia</h1>
+<p>Hay un Jorge, una fecha, y muchas cosecha</p>
+
+<div class="row navgrid">
+    <div class="container col-2 spaceone">
+        <% @landlords.each do |l|  %>
+           <div class="row container"><%= link_to l.name, landlord_path(l) %>  | <%= l.pickups.count %> </div> 
+        <% end%>
+    </div>
+    <div class="container col-6 spacetwo">
+        <% @pickups.each do |l| %>
+            <div class="row">  <i class="fas fa-truck-pickup"></i>  <%= l.landlord.name%> | <%= link_to l.date.to_formatted_s(:short) , pickup_path(l) %> <%=l.kgs%>kg <%=l.cost%>€ <%=l.id%>
+            <i class="fas fa-parachute-box"></i></div>
+            <% end %>
+    </div>
+    <div class="container col-4 spacethree">
+        <% @bags.each do |l| %>
+            <div class="row"><%= l.fruit %> | <%= l.price %>€ /<%= l.quantity %> kg | <%= l.pickup_id %> ID </div>
+                <% end %>
+    </div>    
+</div>
+
+<div class="bottombum">
+    <div class="row">
+    <div class="col-4"><%= link_to "New George", new_landlord_path %></div>
+    <div class="col-4"><%= link_to "New Trip", new_pickup_path %></div>
+    <div class="col-4"><%= link_to "+ Recogida", new_bag_path %></div>
+    </div>
+</div>

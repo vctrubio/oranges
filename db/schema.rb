@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_195827) do
+ActiveRecord::Schema.define(version: 2020_10_12_140622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_195827) do
     t.string "address"
     t.string "zone"
     t.text "description"
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.bigint "employee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_195827) do
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "phone"
-    t.float "credit"
+    t.integer "credit", default: 0
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_195827) do
     t.string "address"
     t.string "phone"
     t.string "description"
-    t.integer "fields"
+    t.integer "fields", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_195827) do
   create_table "orders", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.datetime "date"
-    t.float "price"
+    t.integer "price", default: 0
     t.string "comment"
     t.boolean "delivered"
     t.boolean "paid"
@@ -97,8 +97,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_195827) do
     t.bigint "landlord_id", null: false
     t.date "date"
     t.integer "kgs"
-    t.float "cost"
-    t.float "addcost"
+    t.float "cost", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "comment"

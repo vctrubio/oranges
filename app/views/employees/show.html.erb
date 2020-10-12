@@ -20,15 +20,16 @@
   <%= @employee.description %>
 </p>
 
+
 <p>
   <strong>Clients: <%= @employee.clients.count %></strong> <br>
   <% @employee.clients.each do |client|%>
-    <%= link_to client.name, client_path(client) %>, <%= client.address%> |<%= client.orders.count %> <i class="fas fa-concierge-bell"></i>
+    <%= link_to client.name, client_path(client) %>, |<%= client.address%> <i class="fas fa-parachute-box"></i> <%= client.orders.count %> 
     <br>
   <% end %>
 </p>
 
-<%= link_to 'Add a client', new_client_path() %> 
+<%= link_to 'Add a client', new_client_path(:bone => "#{@employee.id}")%> 
 <%# this doesnt work - because i need to send params of employee id through  <%= hidden_field_tag :employee_id, @employee.id %>
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>

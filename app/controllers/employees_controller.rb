@@ -25,6 +25,9 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
+    if @employee.credit.nil? 
+      @employee.credit = 0
+    end
 
     respond_to do |format|
       if @employee.save

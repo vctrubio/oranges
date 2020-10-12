@@ -11,7 +11,7 @@
 
 <p>
   <strong>Total cost:</strong>
-  <%= @pickup.cost %>  (<%= @pickup.addcost %> extra)
+  <%= @pickup.cost %> 
 </p>
 
 
@@ -19,14 +19,26 @@
   <strong>Recojidas:</strong>
   <% @pickup.bags.each do |f| %>
   <br>
-    <%= f.fruit %> , <%= f.quantity%> kg - <%= f.price %>€ 
+    <%= f.fruit %> , <%= f.quantity%> kg - <%= f.price %>€  
+    <%# <%= link_to "Delete", bag_path(f), method: :destroy %>
      <%end %>
 </p>
 
 
-<br>
-<%= link_to 'Merrcadona', new_bag_path(@pickup) %>
-<br>
+
+<%= simple_form_for(@bag) do |f| %>
+<% @bag.pickup = @pickup %>
+  <div class="form-inputs">
+    <%= f.association :pickup%>
+    <%= f.input :fruit %>
+    <%= f.input :quantity %>
+    <%= f.input :price %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_pickup_path(@pickup) %> |

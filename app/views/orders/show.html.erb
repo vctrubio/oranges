@@ -2,8 +2,9 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @order.client.name %>
-  <%= @order.client.phone %>
+  <%= @order.client.name %>|
+  <%= @order.client.phone %>|
+  <%= @order.client.address %>
 </p>
 
 <p>
@@ -42,9 +43,14 @@
       </li>
 
     <%= simple_form_for([@order, @receipt]) do |f|%>
-    <%= f.input :kilos %>
-    <%= f.input :fruit %>
-    <%= f.input :ppfruit %>
+    <div class="container">
+    <br>
+    <%= f.input :fruit, as: :radio_buttons, collection: ['Nz', 'Nm', 'Mandarina', 'Limon', 'Kiwi', 'Otros'],  wrapper: :vertical_collection_inline  %>
+    <div class="container row">
+    <%= f.input :kilos %>    <%= f.input :ppfruit %>
+    </div>
+    </div>
+
     <%# <%= f.input :tprice %>
     <%= f.button :submit %>
     <% end %>

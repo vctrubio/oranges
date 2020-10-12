@@ -1,52 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<div class="order-nav">
+<div class="container">
+  <div class="order-nav">
   <div class="row">
-  <div class="col-2"> <strong>Pedidos</strong></div>
+  <div class="col-2">Pedidos <%= Time.now.strftime("%d/%m/%Y %A") %></div>
   <div class="col-4 searchbar"> Search Bar</div>
   <div class="col-2">Filtros[]</div>
   <div class="col-2">Sort</div>
   </div>
 </div>
 
-<table>
 
-  <tbody>
     <% @orders.each do |order| %>
     <div class="container order-card">
       <div class="row">
-        <div class="col-12"><%= order.client.name %></div>
+        <div class="col-6"><%= link_to order.client.address, order_path(order) %></div>
+        <div class="col-3"><%= order.date.to_formatted_s(:short) %></div>
+        <div class="col-3"><i class="far fa-user"></i> <%= order.client.name %></div>
       </div>
       <div class="row">
-        <div class="col-12"><%= order.date.to_formatted_s(:short)%></div>
-      </div>
-      <div class="row">
-        <div class="col-12"><%= order.client.address %></div>
+        <div class="col-6"><%= order.comment %></div>
+        <div class="col-3"><%= order.delivered %> <%= order.paid %></div>
+        <div class="col-3"><%= order.price %> €</div>
       </div>  
       <div class="row">
-        <div class="col-12"><%= order.comment %></div>
-      </div>
-      <div class="row">
-        <div class="col-2"> <%= order.price %>
-        </div>
-        <div class="col-2"> <%= order.receipts.count %>
-        </div>
-        <div class="col-2"> <%= order.delivered %>
-        </div> 
-        <div class="col-2"> <%= order.paid %>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-12">
-        <%= link_to 'Show', order_path(order) %>
         <%= link_to 'Edit', edit_order_path(order) %>
         <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+   <% end %>
+</div>
 
-<%# <%= link_to 'New Order', new_order_path %>
+
