@@ -1,3 +1,4 @@
 class Payment < ApplicationRecord
-    belongs_to :employee
+    has_many :employees
+    has_many :totals
 end

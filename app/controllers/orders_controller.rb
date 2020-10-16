@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_client, only: [:new]
   before_action :new_receipt, only: [:show]
+  before_action :new_total, only: [:addtotal, :create, :update]
 
 
   # GET /orders
@@ -32,14 +33,22 @@ class OrdersController < ApplicationController
       @order.price = (@order.receipts.tprice.sum)
     end
     if @order.save
+      addtotal
       redirect_to @order
     else
       render :new
     end
   end
+#here the addtotal works for the create but not for the update¿?
+  def addtotal
+    @total.order_id = @order.id
+    @total.inflow = @order.price
+    @total.save
+  end
 
   # PATCH/PUT /orders/1
   def update
+    addtotal
     if @order.update(order_params)
       redirect_to @order, notice: 'Order was successfully updated.'
     else
@@ -74,5 +83,9 @@ class OrdersController < ApplicationController
     
     def new_receipt
       @receipt = Receipt.new
+    end
+
+    def new_total
+      @total = Total.new
     end
 end

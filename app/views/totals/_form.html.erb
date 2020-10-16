@@ -4,9 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :payment %>
-    <%= f.association :order %>
-    <%= f.association :pickup %>
+
     <%= f.input :inflow %>
     <%= f.input :outflow %>
     <%= f.input :balance %>

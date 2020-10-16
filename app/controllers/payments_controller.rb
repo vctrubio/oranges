@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :new_total, only: [:addtotal, :create]
 
   # GET /payments
   def index
@@ -24,12 +25,18 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
     if @payment.save
+      addtotal
       redirect_to @payment, notice: 'Payment was successfully created.'
     else
       render :new
     end
   end
 
+  def addtotal
+    @total.payment_id = @payment.id
+    @total.outflow = @payment.price
+    @total.save
+  end
   # PATCH/PUT /payments/1
   def update
     if @payment.update(payment_params)
@@ -54,5 +61,9 @@ class PaymentsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def payment_params
       params.require(:payment).permit(:date, :title, :price, :ticket)
+    end
+
+    def new_total
+      @total = Total.new
     end
 end

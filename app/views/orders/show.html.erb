@@ -45,9 +45,11 @@
     <%= simple_form_for([@order, @receipt]) do |f|%>
     <div class="container">
     <br>
-    <%= f.input :fruit, as: :radio_buttons, collection: ['Nz', 'Nm', 'Mandarina', 'Limon', 'Kiwi', 'Pomelo'],  wrapper: :vertical_collection_inline  %>
+    <%= f.input :fruit, label: 'Fruta', as: :radio_buttons, collection: ['Nz', 'Nm', 'Mandarina', 'Limon', 'Kiwi', 'Pomelo'],  wrapper: :vertical_collection_inline  %>
     <div class="container row">
-    <%= f.input :kilos %>    <%= f.input :ppfruit %>
+    <%= f.input :kilos, label: 'Kg' %>    
+    <%= f.input :ppfruit, label: '€/kg' %>
+    <%= f.input :tprice, label: 'TOTAL', disabled: true, hint: 'PRECIO' %>
     </div>
     </div>
 

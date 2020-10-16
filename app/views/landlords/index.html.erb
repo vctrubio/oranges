@@ -1,28 +1,43 @@
 <p><%= link_to "New Trip", new_pickup_path %> | <%= link_to "+ Recogida", new_bag_path %> | <%= link_to "Nuevo Contacto", new_landlord_path %> | <%= link_to "TodoMovistar", payments_path %> | <%= link_to "CASHFLOW", totals_path %> </p>
+
 <p> <% @landlords.each do |l|  %>
     <%= link_to l.name, landlord_path(l) %>  <%= l.pickups.count %>  <i class="fas fa-truck-loading"></i> | </div> 
         <% end%>
 </p>
 
-<h2>Frutas</h2>
-<% @pickups.each do |l| %>
-<div class="container row marginfive">
-    <div class="card-pickups">
-    <%= link_to l.date.to_formatted_s(:short) , pickup_path(l) %> , <%=l.kgs%>kg, <%=l.cost%>€ ||avg
+<div class="frutis">
+
+    <% @pickups.each do |l| %>
+        <div class="frutis-card">
+            <div class="trfruits">
+                <div class="frutis-title">
+                    <%= l.date.strftime("%^b %e") %> |<%= l.bags.count %>|
+                </div>
+                <div class="frtuis-number">
+                    <div class="fprice"><%= l.kgs %> kg</div>
+                    <div class="fcost"><%= l.cost %> €</div>
+                    <div class="favg">(<%= (l.cost/l.kgs).to_f %>)</div>
+                </div>
+            </div>
+
+            <div class="">
+            <%l.bags.each do |f| %>
+                <div class="frutis-bags">
+                    <%= f.fruit %>
+                </div>
+                <div class="bag-number">
+                    <div class="fprice"><%= f.quantity %> kg</div>
+                    <div class="fcost"><%= f.price %> €</div>
+                    <div class="favg">(<%= (f.price/f.quantity).to_f %>)</div>
+                </div>
+                <br>
+            <% end %>
+            </div>
         </div>
-        <div class="container row">
-        <%l.bags.each do |f| %>
-            <%= f.fruit %>, <%= f.quantity %> kg, <%= f.price %> € 
-    </div>
-         <% end %>
     <% end %>
 </div>
-<p>QUEDA POR: TOTAL DE KG Y COSTE pickups</p>
 
 <br>    
 <h2>Gastos</h2>
     <%= render './payments/form', payment: @payment %>
 <br>
-<h3>Beneficios</h3>
-<p>Gastos recien, Gastos Total, Income Total, Balance/cashflow, Para pagar </p>
-<p>INCOME de ORDER: no. of Orders, $total, kgTotal, %typeoffruit, by weeks </p>

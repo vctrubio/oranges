@@ -29,3 +29,64 @@
 .margingive {
   margin: 12px;
 }
+
+.frutis {
+  border: 2px dotted black;
+  margin: 10px;
+  padding: 5px 20px 5px 20px;
+}
+
+.frutis-card {
+  border: 2px solid black;
+  margin: 10px;
+}
+
+.frutis-title {
+  border-bottom: 2px solid black;
+  margin: 4px;
+  padding: 0px 5px 0px 5px;
+}
+
+.frtuis-number {
+  display: flex;
+  justify-content: space-around;
+}
+
+.trfruits {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.frutis-bags {
+  background-color: $oname;
+  margin: 0px 0px 0px 5px;
+  padding: 0px 5px 0px 5px;
+  color: white;
+  display: inline-flex;
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.bag-number {
+  display: inline-flex;
+}
+
+.fprice {
+  background-color: chocolate;
+  margin: 4px;
+  padding: 0px 5px 0px 5px;
+}
+
+.fcost {
+  background-color: $red;
+  margin: 4px;
+  padding: 0px 5px 0px 5px;
+}
+
+.favg {
+  background-color: $green;
+  margin: 4px;
+  padding: 0px 5px 0px 5px;
+}

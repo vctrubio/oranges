@@ -14,6 +14,11 @@
   <%= @pickup.cost %> 
 </p>
 
+<p>
+  <strong>AVG price:€/kgs</strong>
+  <%= (@pickup.cost / @pickup.kgs) %> 
+</p>
+
 
 <p>
   <strong>Recojidas:</strong>
@@ -30,9 +35,9 @@
 <% @bag.pickup = @pickup %>
   <div class="form-inputs">
     <%= f.association :pickup, collection: Pickup.all.map { |pickup| [pickup.date, pickup.id] }%>
-    <%= f.input :fruit %>
-    <%= f.input :quantity %>
-    <%= f.input :price %>
+    <%= f.input :fruit, label: 'que fruta' %>
+    <%= f.input :quantity, label: 'cuanto has recojido' %>
+    <%= f.input :price, label: 'cuanto has pagao'%>
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
