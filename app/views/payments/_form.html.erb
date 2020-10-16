@@ -1,0 +1,21 @@
+<%= simple_form_for @payment,
+  wrapper: :inline_form,
+  html: { class: "form-inline" },
+  wrapper_mappings: {
+    boolean: :inline_boolean
+  } do |f| %>
+
+
+  <%= f.input :date, input_html: { class: "mb-4 mr-sm-4" } %>
+
+  <%= f.input :title, input_html: { class: "mb-4 mr-sm-4" }, placeholder: "nombre" %>
+  
+  <%= f.input :price, input_html: { class: "mb-4 mr-sm-4" }, placeholder: "€" %>
+
+  <%= f.input :ticket %>
+
+  <%= f.button :submit, class: "btn-primary mb-2" %>
+<% end %>
+
+
+

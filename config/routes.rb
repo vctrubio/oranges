@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :totals
+  resources :payments
   resources :orders do 
     resources :receipts, only: [:create, :destroy]
     end

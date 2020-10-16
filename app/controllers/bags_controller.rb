@@ -34,7 +34,7 @@ class BagsController < ApplicationController
         end
       
         def addcost
-          @bag.pickup.cost += @bag.price * @bag.quantity
+          @bag.pickup.cost += @bag.price
           @bag.pickup.kgs += @bag.quantity
         end
 

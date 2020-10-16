@@ -1,9 +1,10 @@
-<h1>Ir a Valencia</h1> <p><%= link_to "New Trip", new_pickup_path %> | <%= link_to "+ Recogida", new_bag_path %> | <%= link_to "Nuevo Contacto", new_landlord_path %></p>
+<p><%= link_to "New Trip", new_pickup_path %> | <%= link_to "+ Recogida", new_bag_path %> | <%= link_to "Nuevo Contacto", new_landlord_path %> | <%= link_to "TodoMovistar", payments_path %> | <%= link_to "CASHFLOW", totals_path %> </p>
 <p> <% @landlords.each do |l|  %>
     <%= link_to l.name, landlord_path(l) %>  <%= l.pickups.count %>  <i class="fas fa-truck-loading"></i> | </div> 
         <% end%>
 </p>
 
+<h2>Frutas</h2>
 <% @pickups.each do |l| %>
 <div class="container row marginfive">
     <div class="card-pickups">
@@ -16,5 +17,12 @@
          <% end %>
     <% end %>
 </div>
+<p>QUEDA POR: TOTAL DE KG Y COSTE pickups</p>
 
-
+<br>    
+<h2>Gastos</h2>
+    <%= render './payments/form', payment: @payment %>
+<br>
+<h3>Beneficios</h3>
+<p>Gastos recien, Gastos Total, Income Total, Balance/cashflow, Para pagar </p>
+<p>INCOME de ORDER: no. of Orders, $total, kgTotal, %typeoffruit, by weeks </p>

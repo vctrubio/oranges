@@ -7,6 +7,7 @@ class LandlordsController < ApplicationController
     @landlords = Landlord.all
     @pickups = Pickup.all
     @bags = Bag.all
+    @payment = Payment.new
   end
 
   # GET /landlonds/1

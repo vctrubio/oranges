@@ -29,7 +29,7 @@
 <%= simple_form_for(@bag) do |f| %>
 <% @bag.pickup = @pickup %>
   <div class="form-inputs">
-    <%= f.association :pickup%>
+    <%= f.association :pickup, collection: Pickup.all.map { |pickup| [pickup.date, pickup.id] }%>
     <%= f.input :fruit %>
     <%= f.input :quantity %>
     <%= f.input :price %>
@@ -41,6 +41,5 @@
 
 
 
-<%= link_to 'Edit', edit_pickup_path(@pickup) %> |
 <%= link_to 'Back', landlords_path %>
 <%= link_to "Delete", pickup_path(@pickup), method: :delete, data: { confirm: 'Are you sure?' }  %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_12_140622) do
+ActiveRecord::Schema.define(version: 2020_10_12_145255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,17 +23,6 @@ ActiveRecord::Schema.define(version: 2020_10_12_140622) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "fruit"
     t.index ["pickup_id"], name: "index_bags_on_pickup_id"
-  end
-
-  create_table "bills", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.integer "kg"
-    t.string "fruit"
-    t.float "ppfruit"
-    t.float "tprice"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_bills_on_order_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -70,17 +59,6 @@ ActiveRecord::Schema.define(version: 2020_10_12_140622) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "names", force: :cascade do |t|
-    t.string "phone"
-    t.string "address"
-    t.string "zone"
-    t.text "description"
-    t.bigint "employee_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["employee_id"], name: "index_names_on_employee_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.datetime "date"
@@ -91,6 +69,17 @@ ActiveRecord::Schema.define(version: 2020_10_12_140622) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.date "date"
+    t.string "title"
+    t.float "price"
+    t.boolean "ticket"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_payments_on_employee_id"
   end
 
   create_table "pickups", force: :cascade do |t|
@@ -115,21 +104,18 @@ ActiveRecord::Schema.define(version: 2020_10_12_140622) do
     t.index ["order_id"], name: "index_receipts_on_order_id"
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string "name"
+  create_table "totals", force: :cascade do |t|
+    t.bigint "payment_id"
+    t.bigint "order_id"
+    t.bigint "pickup_id"
+    t.float "inflow"
+    t.float "outflow"
+    t.float "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tickets", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.integer "kg"
-    t.string "fruit"
-    t.float "ppfruit"
-    t.float "tprice"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_tickets_on_order_id"
+    t.index ["order_id"], name: "index_totals_on_order_id"
+    t.index ["payment_id"], name: "index_totals_on_payment_id"
+    t.index ["pickup_id"], name: "index_totals_on_pickup_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -145,11 +131,12 @@ ActiveRecord::Schema.define(version: 2020_10_12_140622) do
   end
 
   add_foreign_key "bags", "pickups"
-  add_foreign_key "bills", "orders"
   add_foreign_key "clients", "employees"
-  add_foreign_key "names", "employees"
   add_foreign_key "orders", "clients"
+  add_foreign_key "payments", "employees"
   add_foreign_key "pickups", "landlords"
   add_foreign_key "receipts", "orders"
-  add_foreign_key "tickets", "orders"
+  add_foreign_key "totals", "orders"
+  add_foreign_key "totals", "payments"
+  add_foreign_key "totals", "pickups"
 end
