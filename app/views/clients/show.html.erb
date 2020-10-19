@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <span>numero:</span>
+  <%= @client.flat %>
+</p>
+
+<p>
   <strong>Zone:</strong>
   <%= @client.zone %>
 </p>
@@ -24,6 +29,15 @@
   <strong>Description:</strong>
   <%= @client.description %>
 </p>
+
+<p>
+  <strong>longlat:</strong>
+  <%= @client.latitude  %> <%= @client.longitude %>
+</p>
+
+<div data-target="places.map" style="height:400px">
+
+</div>
 
 <p>
   <strong>Naranjas rating:</strong>
