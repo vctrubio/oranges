@@ -1,63 +1,71 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+<div class="tryout">
+<div class="client-card">
+  <div class="title">
+    <div class="name">
+      <i class="far fa-address-card"></i>
+      <%= link_to @client.name, edit_client_path(@client) %> 
+    </div>
+    <div class="stars">
+      <% @client.rating.round.times do %>
+                      <i class="fas fa-star"></i>
+                   <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
+  <div class="address">
+    <div class="flat">
+    <% if @client.flat%> 
+      <%= @client.flat %> 
+    <% end %>
+    </div>
+    | <%= @client.address %>
+  </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
+  <div class="contact">
+    <div class="phone">
+      <%= @client.phone %>
+    </div>
+    <div class="zona">
+      <%= @client.zone %>
+    </div>
+  </div>
 
-<p>
-  <span>numero:</span>
-  <%= @client.flat %>
-</p>
+  <div class="info">
+    <div class="count">
+      <%= @client.orders.count %> 
+    </div>
+    <div class="descrp">
+      <%= @client.description %>
+    </div>
+  </div>
 
-<p>
-  <strong>Zone:</strong>
-  <%= @client.zone %>
-</p>
+  <div class="orders btn btn-danger">
+      <%= link_to "+ Pedido", new_client_order_path(@client) %>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @client.description %>
-</p>
-
-<p>
-  <strong>longlat:</strong>
-  <%= @client.latitude  %> <%= @client.longitude %>
-</p>
-
-<div data-target="places.map" style="height:400px">
+<div class="client-order">
+        <i class="far fa-user"></i> <%= link_to @client.employee.name, employee_path(@client.employee) %>
+          <% totalpay = 0 %>
+         <% @client.orders.each do |price| %>
+          <% totalpay += (price.price * 0.10) %>
+          <% end %>
+          [<%= totalpay.round(2) %>€] 
+    <div class="do">
+      <% @client.orders.order("created_at desc").each do |o| %>
+      <div class="row">
+      <%= o.date.strftime("%a, %e-%b") %>   | <%= link_to o.price, order_path(o)%>|€
+        <% o.receipts.each do |f| %>
+        (<%= f.kilos %> <%= f.fruit %>)
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+</div>
 
 </div>
 
-<p>
-  <strong>Naranjas rating:</strong>
-  <% @client.rating.round.times do %>
-                      <i class="fas fa-star"></i>
-                    <% end %>
-</p>
-
-<p>
-  <strong>Employee:</strong>
-  <%= link_to @client.employee.name, employee_path(@client.employee) %>
-</p>
-
-<class class="container">
-<h3><%= @client.name %> has <%= @client.orders.count %> <%= link_to "Create an order", new_client_order_path(@client) %></h3>
-
-</class>
-
 <br>
-
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

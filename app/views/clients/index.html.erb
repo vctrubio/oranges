@@ -26,7 +26,12 @@
       
       <div class="row">
         <div class="col-3"><i class="fas fa-phone-square"></i> <%= client.phone %></div>
-        <div class="col-6"><i class="fas fa-map-marker-alt"></i> <%= client.address %></div>
+        <div class="col-6"><i class="fas fa-map-marker-alt"></i>           
+        <% if !client.flat.nil? %>
+            <%= client.flat %>
+          <% end %>
+          <%= link_to client.address%>
+        </div>
         <div class="col-3"> <%= client.zone %></div>
       </div>
       <div class="row">

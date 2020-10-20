@@ -51,18 +51,35 @@ for(var i = 0; i < address.length; i++)
 
 </script>
 
+<div class="container">
 <%= simple_form_for(@client, data:{ controller: "places", action: "google-maps-callback@window->places#initAutocomplete"}) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.association :employee%>
-
-    <%= f.input :phone %>
-    <%= f.input :address, class: "form-control",:input_html => { :id => "autocomplete" }, data:{ target: "places.field"} %>
-    <%= f.input :flat %>
-    <%= f.input :zone, :input_html => { :id => "autozone" } %>
+    <div class="titles">
+      <%= f.input :name %>
+      <%= f.association :employee%>
+    </div>
+    
+    <div class="phones">
+      <div class="col-9">
+        <%= f.input :phone %>
+      </div>
+      <div class="col-3">
+        <%= f.input :zone, :input_html => { :id => "autozone" },disabled: true %>
+      </div>
+    </div>
+   
+    <div class="address">
+      <div class="col-3">
+        <%= f.input :flat %>
+      </div>
+     <div class="col-9">
+        <%= f.input :address, class: "form-control",:input_html => { :id => "autocomplete" }, data:{ target: "places.field"} %>
+      </div>
+    </div>
+    
     <%= f.input :description %>
     <%= f.input :rating%>
   </div>
@@ -71,3 +88,4 @@ for(var i = 0; i < address.length; i++)
     <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
+ </div> 

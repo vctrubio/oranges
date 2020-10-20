@@ -1,15 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @order.client.name %>|
-  <%= @order.client.phone %>|
-  <%= @order.client.address %>
-</p>
+  <div class="order-title">
+  <i class="far fa-address-card"></i> <%= link_to @order.client.name, client_path(@order.client) %>
+  <i class="fas fa-phone-alt"></i> <%= @order.client.phone %>
+  <i class="fas fa-map-marker"></i> <%= @order.client.address %>
+  </div>
 
 <p>
   <strong>Date:</strong>
-  <%= @order.date %>
+  <%= @order.date.strftime("%e-%b, %^a, entre %I y %M %P") %>
 </p>
 
 <p>
