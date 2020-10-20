@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:new]
+  # before_action :set_client, only: [:new]
   before_action :new_receipt, only: [:show]
   before_action :new_total, only: [:addtotal, :create, :update]
 
@@ -16,6 +16,11 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    if !Client.find(params[:client_id]).nil?
+      @client = Client.find(params[:client_id])
+    else
+      
+    end
     @order = Order.new
     @order.client = @client 
   #  wtf is thshit @order.tickets.build ur mama was a rilling stone

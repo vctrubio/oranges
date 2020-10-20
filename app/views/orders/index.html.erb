@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to "New Order", new_order_path %>
 <div class="container">
   <div class="order-nav">
   <div class="row">
@@ -20,7 +21,7 @@
       </div>
       <div class="row">
         <div class="col-6"><%= order.comment %></div>
-        <div class="col-3"><%= order.delivered %> <%= order.paid %></div>
+        <div class="col-3"><%= order.delivered %><%= order.paid %></div>
         <div class="col-3"><%= order.price %> €</div>
       </div>  
       <div class="row">
