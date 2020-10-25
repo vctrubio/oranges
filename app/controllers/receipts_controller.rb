@@ -22,6 +22,8 @@ class ReceiptsController < ApplicationController
     def discountorderprice
       @receipt.order.price -= @receipt.tprice
       @receipt.order.client.employee.credit -= @receipt.tprice * (0.10)
+      @receipt.order.save
+      @receipt.order.client.save
     end
 
       # DELETE /orders/1 FUCKING WORK ON THIS CAUSE IT DOESNT WORK- PARAMS CANNOT FIND ID BLABLABLA

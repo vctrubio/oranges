@@ -29,19 +29,23 @@ function fillInAddress() {
   // Get the place details from the autocomplete object.
   const place = autocomplete.getPlace();
   var address = place.address_components;
+  var formZipCode = document.getElementById("autozone");
+
   console.log(address);
    var zipcode = "";
-for(var i = 0; i < address.length; i++)
-{
+  for(var i = 0; i < address.length; i++)
+  {
   if (address[i].types == 'postal_code')
   {
     zipcode = address[i].short_name
-    console.log(zipcode)
+    formZipCode.value = zipcode
+  }
+
+
 
   }
-}
 
-    // document.querySelectorAll('#autozone').value = zipcode
+// document.querySelectorAll('#autozone').value = zipcode
 //this wont fucking work
 
 } 
@@ -67,7 +71,7 @@ for(var i = 0; i < address.length; i++)
         <%= f.input :phone %>
       </div>
       <div class="col-3">
-        <%= f.input :zone, :input_html => { :id => "autozone" },disabled: true %>
+        <%= f.input :zone,:input_html => { :id => "autozone" }%>
       </div>
     </div>
    
