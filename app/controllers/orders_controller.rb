@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :paid, :delivered]
   # before_action :set_client, only: [:new]
   before_action :new_receipt, only: [:show]
   before_action :new_total, only: [:addtotal, :create, :update]
@@ -8,6 +8,14 @@ class OrdersController < ApplicationController
   # GET /orders
   def index
     @orders = Order.all
+  end
+
+  def paid
+    @order.toggle! :paid
+  end
+
+  def delivered
+    @order.toggle! :delivered
   end
 
   # GET /orders/1

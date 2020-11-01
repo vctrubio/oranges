@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_123609) do
+ActiveRecord::Schema.define(version: 2020_11_01_114730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_123609) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "client_id", null: false
-    t.datetime "date"
+    t.date "date"
     t.float "price", default: 0.0
     t.string "comment"
     t.boolean "delivered"
@@ -105,6 +105,16 @@ ActiveRecord::Schema.define(version: 2020_10_20_123609) do
     t.index ["order_id"], name: "index_receipts_on_order_id"
   end
 
+  create_table "sacks", force: :cascade do |t|
+    t.bigint "pickup_id", null: false
+    t.integer "quantity"
+    t.float "price"
+    t.string "fruit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pickup_id"], name: "index_sacks_on_pickup_id"
+  end
+
   create_table "totals", force: :cascade do |t|
     t.bigint "payment_id"
     t.bigint "order_id"
@@ -137,6 +147,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_123609) do
   add_foreign_key "payments", "employees"
   add_foreign_key "pickups", "landlords"
   add_foreign_key "receipts", "orders"
+  add_foreign_key "sacks", "pickups"
   add_foreign_key "totals", "orders"
   add_foreign_key "totals", "payments"
   add_foreign_key "totals", "pickups"

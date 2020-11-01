@@ -1,11 +1,16 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to "New Order", new_order_path %>
+   <input id="basics" /> 
 <div class="container">
+      <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
   <div class="order-nav">
   <div class="row">
-  <div class="col-2">Pedidos <%= Time.now.strftime("%d/%m/%Y %A") %></div>
-  <div class="col-4 searchbar"> Search Bar</div>
+  <div class="col-2"><%= Time.now.strftime("%A %d/%m") %></div>
+    <div class="col-4 searchbar"> 
+
+    </div>
   <div class="col-2">Filtros[]</div>
   <div class="col-2">Sort</div>
   </div>

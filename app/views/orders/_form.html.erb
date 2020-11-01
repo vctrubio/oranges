@@ -6,17 +6,7 @@
   <div class="form-inputs">
 <%# if client_id present - automaticaly put client id as client  => default tpm    %>
     <%= f.association :client %>
-    <%= f.input :date %>
-
-
-    <div class="add-fucking-tickets-man">    
-    </div>
-
-      <%# <%= f.fields_for :tickets do |t|%>
-      <%# <%= render 'ticket_fields', t: t %>
-      <%# <% end %> 
-      <%# <%= link_to_add_fields "Add", f, :tickets %>
- 
+    <%= f.text_field :date, data: {behavior: "flatpickr"} %>
     <br>
     <%= f.input :delivered %>
     <%= f.input :paid %>

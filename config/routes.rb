@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :totals
   resources :payments
-  resources :orders do 
+  resources :orders   do 
+    member do 
+      patch :paid
+      patch :delivered
+    end
     resources :receipts, only: [:create, :destroy]
     end
   resources :clients  do 
