@@ -1,4 +1,10 @@
 
+/*   
+*= require autocomplete/easy-autocomplete 
+*= require autocomplete/easy-autocomplete.themes    
+*/
+
+
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
@@ -12,6 +18,5 @@
 @import "components/index";
 @import "pages/index";
 
-@import "autocomplete/easy-autocomplete";
-@import "autocomplete/easy-autocomplete.themes";
+
 

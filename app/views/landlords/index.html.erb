@@ -1,4 +1,4 @@
-<p><%= link_to "New Trip", new_pickup_path %> | <%= link_to "+ Recogida", new_bag_path %> | <%= link_to "Nuevo Contacto", new_landlord_path %> | <%= link_to "TodoMovistar", payments_path %> | <%= link_to "CASHFLOW", totals_path %> </p>
+<p><%= link_to "New Trip", new_pickup_path %> | <%= link_to "New PickUp", new_bag_path %> | <%= link_to "New Landlord", new_landlord_path %> <br> <%= link_to "ALL Payments", payments_path %> | <%= link_to "CASHFLOW", totals_path %> </p>
 
 <p> <% @landlords.each do |l|  %>
     <%= link_to l.name, landlord_path(l) %>  <%= l.pickups.count %>  <i class="fas fa-truck-loading"></i> | </div> 
@@ -11,12 +11,12 @@
         <div class="frutis-card">
             <div class="trfruits">
                 <div class="frutis-title">
-                    <%= l.date.strftime("%^b %e") %> |<%= l.bags.count %>|
+                    <%= link_to l.date.strftime("%^b %e"), pickup_path(l) %> |<%= l.bags.count %>|
                 </div>
                 <div class="frtuis-number">
                     <div class="fprice"><%= l.kgs %> kg</div>
                     <div class="fcost"><%= l.cost %> €</div>
-                    <div class="favg">(<%= (l.cost/l.kgs).to_f %>)</div>
+                    <div class="favg">(<%= (l.cost/l.kgs).to_f.round %>)</div>
                 </div>
             </div>
 

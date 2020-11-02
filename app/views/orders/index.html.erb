@@ -1,7 +1,7 @@
 
 <%# <%= link_to "New Order", new_order_path this doesnt f work becasue ecannot find client.id when there is no id %> 
       <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" id="basics" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" id="testautocomplete" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create an Order</button>
       </form>
@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-6"><%= order.comment %></div>
 
-        <div class="col-3" id="testing-<%=order.id %>">
+        <div class="col-3" id="order-<%=order.id%>">
         <%= order.delivered %> <%= order.paid %>
         </div>
 
