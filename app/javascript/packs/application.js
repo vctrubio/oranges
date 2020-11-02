@@ -20,7 +20,7 @@ require("channels");
 import "bootstrap";
 import "controllers";
 // import "jquery.easy-autocomplete";
-import "toggleme";
+// import "toggleme";
 
 import flatpickr from "flatpickr";
 require("flatpickr/dist/flatpickr.css")

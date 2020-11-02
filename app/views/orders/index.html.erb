@@ -1,19 +1,18 @@
 
 <%# <%= link_to "New Order", new_order_path this doesnt f work becasue ecannot find client.id when there is no id %> 
-
-<div class="container">
       <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" id="basics" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create an Order</button>
       </form>
+
+<div class="container">
+
   <div class="order-nav">
   <div class="row">
-  <div class="col-2"><%= Time.now.strftime("%A %d/%m") %></div>
-    <div class="col-4 searchbar"> 
-
-    </div>
-  <div class="col-2">Filtros[]</div>
-  <div class="col-2">Sort</div>
+    <div class="col-2"><%= Time.now.strftime("%A %d/%m") %></div>
+    <div class="col-2">Filters[]</div>
+    <div class="col-2">Sort[dropdown]</div>
   </div>
 </div>
 
@@ -23,12 +22,13 @@
       <div class="row">
         <div class="col-6"><%= link_to order.client.address, order_path(order) %></div>
         <div class="col-3"><%= order.date.to_formatted_s(:short) %></div>
+        <div class="col-3"><i class="far fa-user"></i> <%= order.client.name %></div>
       </div>
       <div class="row">
         <div class="col-6"><%= order.comment %></div>
 
-        <div class="col-3" id="testing">
-          <%= order.delivered %>
+        <div class="col-3" id="testing-<%=order.id %>">
+        <%= order.delivered %> <%= order.paid %>
         </div>
 
         <div class="col-3"><%= order.price %> €</div>

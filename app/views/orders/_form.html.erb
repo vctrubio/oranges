@@ -7,6 +7,7 @@
 <%# if client_id present - automaticaly put client id as client  => default tpm    %>
     <%= f.association :client %>
     <%= f.text_field :date, data: {behavior: "flatpickr"} %>
+    <%= f.input :time %>
     <br>
     <%= f.input :delivered %>
     <%= f.input :paid %>

@@ -24,6 +24,13 @@
   <%= @landlord.description %>
 </p>
 
+<p>
+  <strong>Pickups:</strong>
+  <% @landlord.pickups.each do |f| %>
+  <br>
+  <%= link_to f.date, pickup_path(f) %>, <%= f.kgs %> kg
+  <% end %>
+</p>
 
 <br>
 
