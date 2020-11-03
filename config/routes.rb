@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :bags, only: [:create, :destroy, :new, :index, :edit]
   devise_for :users
   root to: 'homes#index'
+  mount Api => '/'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
