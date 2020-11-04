@@ -32,6 +32,8 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'grape'
+gem 'grape_on_rails_routes'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

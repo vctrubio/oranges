@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'homes/index'
   resources :totals
   resources :payments
   resources :orders   do 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :pickups, only: [:create, :edit, :show, :index, :destroy, :new]
   resources :bags, only: [:create, :destroy, :new, :index, :edit]
   devise_for :users
-  root to: 'orders#index'
+  root to: 'homes#index'
+  mount Api => '/'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
