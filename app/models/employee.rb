@@ -13,4 +13,14 @@ class Employee < ApplicationRecord
     accepts_nested_attributes_for :payments
 
 
+		def employee_data
+			{
+				id: id,
+				name: name,
+				phone: phone,
+				description: description,
+				credit: credit
+			}
+		end
+
 end

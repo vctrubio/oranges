@@ -3,7 +3,10 @@ class Api < Grape::API
 	prefix "api"
 	default_error_formatter :json
 	content_type :json, 'application/json'
-	mount Tests
+	mount Employees
+	mount Clients
+	mount Landlords
+	mount Totals
 	before do
 			header['Access-Control-Allow-Origin'] = '*'
 			header['Access-Control-Request-Method'] = '*'

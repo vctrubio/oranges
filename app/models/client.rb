@@ -12,4 +12,9 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :orders
   accepts_nested_attributes_for :receipts
  
+  def client_data
+    {
+      
+    }
+  end
 end
